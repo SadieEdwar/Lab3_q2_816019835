@@ -158,7 +158,7 @@ static void integrated_test1(void *arg)
 }
 }
 		//Task deletes itself after running
-                //vTaskDelete(NULL);
+                vTaskDelete(NULL);
 }
 
 static int unitTest_gpio_task_3_message()
@@ -180,7 +180,7 @@ static int unitTest_gpio_task_3_message()
                 }
 }
 		//Task deletes itself after running
-		//vTaskDelete(NULL);
+		vTaskDelete(NULL);
 }
 
 static void unitTest_active_delay(void *arg)

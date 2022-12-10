@@ -12,8 +12,7 @@
 /*static const char *TAG = "main";
 static const char *active_delay_tag = "Actively waited ...";
 static const char *status_message = "Status message";
-static const char *UnityStrPass  = "PASS";
-static const char *UnityStrFail = "FAIL";*/
+static const char *active_delay_fail = "Did not actively wait for ...*/
 /**
  * Brief:
  * This test code shows how to configure gpio and how to use mutex
@@ -96,7 +95,6 @@ static void gpio_task_3_message(void *arg)
 {
     for (;;)
     {
-
             if (gpio_get_level(GPIO_OUTPUT_IO_0))
         	{
 	          ESP_LOGI(status_message,"Led is currently on, GPIO2 is high\n");
@@ -109,16 +107,9 @@ static void gpio_task_3_message(void *arg)
 }
 }
 
-static void unit_test1(void *arg)
+static void integrated_test1(void *arg)
 {
- //start task1
-    Handle1 = xTaskCreate(gpio_task_1_sharingPin, "gpio_task_1_sharingPin", 2048, NULL, 10, NULL);
-    //start task2
-    Handle2 = xTaskCreate(gpio_task_2_sharingPin, "gpio_task_2_sharingPin", 2048, NULL, 10, NULL);
-    //start task3
-    Handle3 = xTaskCreate(gpio_task_3_message, "gpio_task_3_message", 2048, NULL, 10, NULL);
-
-
+	TickType_t start_tick, end_tick, diff_tick;
     for (;;)
     {
     if ( xSemaphore != NULL )
@@ -128,9 +119,27 @@ static void unit_test1(void *arg)
         {
        /* Accessing shared resources , GPIO pin 2 Turning on the LED connected to GPIO pin 2 */
                 gpio_set_level(GPIO_OUTPUT_IO_0, 0);
-                active_delay();
-                ESP_LOGI(active_delay_tag, "500ms\n");
+		ESP_LOGI(status_message, "Checking if GPIO2 is actually set\n");
+		unitTest_gpio_task_3_message();
+		if (unitTest_gpio_task_3_message())
+		{
+			ESP_LOGI( UnityStrFail, "\n");
+		}
+		else
+			ESP_LOGI(UnityStrPass, "\n");
 
+		start_tick = xTaskGetTickCount();
+                active_delay();
+		end_tick = xTaskGetTickCount();
+		diff_tick = start_tick - end_tick;
+		if ((diff_tick <= 51) && (diff_tick >= 49))
+		   {
+		     ESP_LOGI(active_delay_tag, "500ms\n");
+	           }
+		else 
+		{
+		     ESP_LOGI(active_delay_fail, "500ms\n");
+		}
        /*Finished accessing shared resource. Release the semaphore. */
                 xSemaphoreGive( xSemaphore );
                 printf("Giving semaphore\n");
@@ -143,7 +152,28 @@ static void unit_test1(void *arg)
     }
 }
 }
+		//Task deletes itself after running
+                vTaskDelete(NULL);
+}
 
+static int unitTest_gpio_task_3_message()
+{
+	uint8_t num = 1; uint8_t num1 = 0;
+    for (;;)
+    {
+            if (gpio_get_level(GPIO_OUTPUT_IO_0))
+                {
+                  ESP_LOGI(status_message,"Led is currently on, GPIO2 is high\n");
+		  return num;
+                }
+            else
+                {
+                  ESP_LOGI(status_message, "Led is currently off, GPIO2 is low\n");
+		  return num1;
+                }
+}
+		//Task deletes itself after running
+		vTaskDelete(NULL);
 }
 
 static void unitTest_active_delay(void *arg)
@@ -156,13 +186,17 @@ static void unitTest_active_delay(void *arg)
 	 printf("start Time %d\n", start_time);
 	 printf("different Time %d\n",diff);
 	 //Tick rate is 100Hz therefore a tick occurs every 10ms thus 500ms would be in 50 ticks
-	 if ( (diff < 51) && (diff > 49))
+	 if (diff == 50)
 	 {
 		 ESP_LOGI( UnityStrPass, "\n");
 	 }
+	 else if ( (diff < 51) && (diff > 49))
+         {
+                 ESP_LOGI( UnityStrPass, " within 100ms  tolerance\n");
+         }
 	 else 
 		 ESP_LOGI(UnityStrFail, "\n");
-
+	//Task deletes itself after running
 	vTaskDelete(NULL);
 	}
 }
@@ -192,7 +226,7 @@ void app_main(void)
 //    Handle2 = xTaskCreate(gpio_task_2_sharingPin, "gpio_task_2_sharingPin", 2048, NULL, 10, NULL);
     //start task3
 //    Handle3 = xTaskCreate(gpio_task_3_message, "gpio_task_3_message", 2048, NULL, 10, NULL);
-      Handle_test1 = xTaskCreate(unitTest_active_delay, "gpio_task_3_message", 2048, NULL, 9, NULL);
+      Handle_integrated_test1 = xTaskCreate(integrated_test1, "integrated_test1", 2048, NULL, 9, NULL);
  
     int cnt = 0;
     while (1)

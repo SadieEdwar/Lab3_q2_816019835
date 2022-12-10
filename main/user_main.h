@@ -27,7 +27,7 @@ static const char *active_delay_tag = "Actively waited ...";
 static const char *status_message = "Status message";
 static const char *UnityStrPass  = "PASS";
 static const char *UnityStrFail = "FAIL";
-
+static const char *active_delay_fail = "Did not actively wait for ...";
 /**
  * Brief:
  * This test code shows how to configure gpio and how to use mutex
@@ -48,7 +48,9 @@ static TaskHandle_t Handle2 = NULL;
 
 static TaskHandle_t Handle3 = NULL;
 
-static TaskHandle_t  Handle_test1 = NULL;
+static TaskHandle_t Handle_test1 = NULL;
+
+static TaskHandle_t Handle_integrated_test1 = NULL;
 
 static void active_delay();
 
@@ -59,5 +61,9 @@ static void gpio_task_2_sharingPin( void *arg );
 static void gpio_task_3_message(void *arg);
 
 static void unitTest_active_delay(void *arg);
+
+static int unitTest_gpio_task_3_message();
+
+static void integrated_test1(void *arg);
 
 void app_main(void);

@@ -2,7 +2,7 @@ src/ap/wpa_auth_ie.o: \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/src/ap/wpa_auth_ie.c \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/src/utils/includes.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/port/include/supplicant_opt.h \
- /home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h \
+ /home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/driver/soc.h \
@@ -33,7 +33,7 @@ src/ap/wpa_auth_ie.o: \
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/port/include/supplicant_opt.h:
 
-/home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h:
+/home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h:
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h:
 

@@ -2,7 +2,7 @@ src/crypto/crypto_mbedtls.o: \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/src/crypto/crypto_mbedtls.c \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h \
- /home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h \
+ /home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/src/utils/includes.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/wpa_supplicant/port/include/supplicant_opt.h \
@@ -47,7 +47,7 @@ src/crypto/crypto_mbedtls.o: \
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h:
 
-/home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h:
+/home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h:
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h:
 

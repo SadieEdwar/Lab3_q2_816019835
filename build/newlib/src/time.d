@@ -3,7 +3,7 @@ src/time.o: /opt/esp_sdk/ESP8266_RTOS_SDK/components/newlib/src/time.c \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/newlib/platform_include/sys/time.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h \
- /home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h \
+ /home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h \
@@ -44,7 +44,7 @@ src/time.o: /opt/esp_sdk/ESP8266_RTOS_SDK/components/newlib/src/time.c \
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h:
 
-/home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h:
+/home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h:
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h:
 

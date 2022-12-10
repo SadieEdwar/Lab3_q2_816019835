@@ -2,7 +2,7 @@ port/freertos/ffsystem.o: \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/fatfs/port/freertos/ffsystem.c \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/fatfs/src/ff.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/fatfs/src/ffconf.h \
- /home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h \
+ /home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  /opt/esp_sdk/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h \
@@ -38,7 +38,7 @@ port/freertos/ffsystem.o: \
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/fatfs/src/ffconf.h:
 
-/home/sadieedwards/esp/lab2_q1/build/include/sdkconfig.h:
+/home/sadieedwards/esp/lab3_q2/build/include/sdkconfig.h:
 
 /opt/esp_sdk/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 

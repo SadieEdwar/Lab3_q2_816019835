@@ -109,7 +109,6 @@ static void gpio_task_3_message(void *arg)
 
 static void integrated_test1(void *arg)
 {
-	TickType_t start_tick, end_tick, diff_tick;
     for (;;)
     {
     if ( xSemaphore != NULL )
@@ -117,29 +116,35 @@ static void integrated_test1(void *arg)
        /* See if we can obtain the semaphore.  If the semaphore is not available wait 10 ticks to see if it becomes free. */
        if( xSemaphoreTake( xSemaphore, ( TickType_t ) 10 ) == pdTRUE )
         {
-       /* Accessing shared resources , GPIO pin 2 Turning on the LED connected to GPIO pin 2 */
+       /* Accessing shared resources , GPIO pin 2 Turning off the LED connected to GPIO pin 2 */
                 gpio_set_level(GPIO_OUTPUT_IO_0, 0);
 		ESP_LOGI(status_message, "Checking if GPIO2 is actually set\n");
-		unitTest_gpio_task_3_message();
-		if (unitTest_gpio_task_3_message())
+		if (unitTest_gpio_task_3_message()== 1)
 		{
-			ESP_LOGI( UnityStrFail, "\n");
+			ESP_LOGI( UnityStrFail, "GPIO2 was not set correctly\n");
+		}
+		else if(unitTest_gpio_task_3_message() == 0)
+		{
+			ESP_LOGI(UnityStrPass, "GPIO2 was set correctly\n");
 		}
 		else
-			ESP_LOGI(UnityStrPass, "\n");
-
-		start_tick = xTaskGetTickCount();
+			ESP_LOGI(UnityStrFail, "GPIO2 was not set correctly\n");	        //initialization of the variables to hold the scheduler number of ticks	
+		uint32_t start_tick = xTaskGetTickCount();
+		//called function to check that it works in function correctly
                 active_delay();
-		end_tick = xTaskGetTickCount();
-		diff_tick = start_tick - end_tick;
-		if ((diff_tick <= 51) && (diff_tick >= 49))
-		   {
-		     ESP_LOGI(active_delay_tag, "500ms\n");
-	           }
-		else 
-		{
-		     ESP_LOGI(active_delay_fail, "500ms\n");
-		}
+		uint32_t end_tick = xTaskGetTickCount();
+		uint32_t diff_tick = end_tick - start_tick;
+		if (diff_tick == 50)
+                  {
+                 ESP_LOGI( UnityStrPass, "time = 500ms \n");
+                  }
+        	 else if ( (diff_tick <= 51) && (diff_tick >= 49))
+        	 {
+                 	ESP_LOGI( UnityStrPass, " time delay within 100ms  tolerance\n");
+         	}
+	         else
+                	 ESP_LOGI(UnityStrFail, "time delay not within 100ms tolerance\n");
+
        /*Finished accessing shared resource. Release the semaphore. */
                 xSemaphoreGive( xSemaphore );
                 printf("Giving semaphore\n");
@@ -153,7 +158,7 @@ static void integrated_test1(void *arg)
 }
 }
 		//Task deletes itself after running
-                vTaskDelete(NULL);
+                //vTaskDelete(NULL);
 }
 
 static int unitTest_gpio_task_3_message()
@@ -161,19 +166,21 @@ static int unitTest_gpio_task_3_message()
 	uint8_t num = 1; uint8_t num1 = 0;
     for (;;)
     {
-            if (gpio_get_level(GPIO_OUTPUT_IO_0))
+            if (gpio_get_level(GPIO_OUTPUT_IO_0)== 1)
                 {
-                  ESP_LOGI(status_message,"Led is currently on, GPIO2 is high\n");
-		  return num;
+                  return num;
                 }
+	    else if (gpio_get_level(GPIO_OUTPUT_IO_0)== 0 )
+	    {
+		  return num1;
+	    }
             else
                 {
-                  ESP_LOGI(status_message, "Led is currently off, GPIO2 is low\n");
-		  return num1;
+                  return (-1);
                 }
 }
 		//Task deletes itself after running
-		vTaskDelete(NULL);
+		//vTaskDelete(NULL);
 }
 
 static void unitTest_active_delay(void *arg)
@@ -188,14 +195,14 @@ static void unitTest_active_delay(void *arg)
 	 //Tick rate is 100Hz therefore a tick occurs every 10ms thus 500ms would be in 50 ticks
 	 if (diff == 50)
 	 {
-		 ESP_LOGI( UnityStrPass, "\n");
+		 ESP_LOGI( UnityStrPass, "time = 500ms \n");
 	 }
 	 else if ( (diff < 51) && (diff > 49))
          {
-                 ESP_LOGI( UnityStrPass, " within 100ms  tolerance\n");
+                 ESP_LOGI( UnityStrPass, " time delay within 100ms  tolerance\n");
          }
 	 else 
-		 ESP_LOGI(UnityStrFail, "\n");
+		 ESP_LOGI(UnityStrFail, "time delay not within 100ms tolerance\n");
 	//Task deletes itself after running
 	vTaskDelete(NULL);
 	}

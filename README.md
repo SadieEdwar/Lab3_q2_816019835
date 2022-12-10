@@ -1,7 +1,7 @@
 # Lab3_q2_816019835
 Branching and versioning strategy:
 The usage of branching to create versions was thought to be used.
-It would have utilized 'git checkout -b [release-vx.y]`
+It would have utilized `git checkout -b [release-vx.y]`
 where x denoted the final issue or push to GitHub
 and y denoted the updates of small changes of the code
 The above would have used release branches when the master branch is at a stable point and specific chnages need to be made.
@@ -13,10 +13,10 @@ And the other was to recreate the operation of unity , where the task was delete
 No driver function was used because the task1 in lab2_q1 where the light should be turned on was the function that called the unit tested function active_delay().
 The different functions of the task1:
 1. access the mutex that allows the setting hihg or low of GPIO2
-1. GPIO2 pin set to high
-2. active_delay(), scheduler ticks use to acquire 500ms of time passing
-3. Give the mutex
-4. Taskdelay(), switches to another task
+2. GPIO2 pin set to high
+3. active_delay(), scheduler ticks use to acquire 500ms of time passing
+4. Give the mutex
+5. Taskdelay(), switches to another task
 where all were tested individually, and such the test cases are as followed below
 
 ## Test Case #1
@@ -45,7 +45,7 @@ where all were tested individually, and such the test cases are as followed belo
 + Test Case ID: TC003
 + Test Case Description: GPIO2 pin was set to high through mutex
 + Test Steps:
-1)call the intergated_test1 Task
+1) call the intergated_test1 Task
 2) enter the mutex , xSemaphore
 3) set the GPIO2 pin to 0
 + Test Data: GPIO_OUTPUT_IO_0
@@ -57,7 +57,7 @@ where all were tested individually, and such the test cases are as followed belo
 + Test Case ID: TC004
 + Test Case Description: GPIO2 pin was set to low through mutex
 + Test Steps:
-1)call the intergated_test1 Task
+1) call the intergated_test1 Task
 2) enter the mutex , xSemaphore
 3) set the GPIO2 pin to 1
 + Test Data: GPIO_OUTPUT_IO_0
@@ -69,7 +69,7 @@ where all were tested individually, and such the test cases are as followed belo
 + Test Case ID: TC005 
 + Test Case Description: GPIO2 pin was set to some other logic level
 + Test Steps:
-1)call the intergated_test1 Task
+1) call the intergated_test1 Task
 2) enter the mutex , xSemaphore
 3) set the GPIO2 pin to 0
 + Test Data: GPIO_OUTPUT_IO_0	
@@ -81,7 +81,7 @@ where all were tested individually, and such the test cases are as followed belo
 + Test Case ID: TC006
 + Test Case Description: Active delay function was called within function 
 + Test Steps:
-1)call the intergated_test1 Task
+1) call the intergated_test1 Task
 2) enter the mutex , xSemaphore
 3) set the GPIO2 pin to 0
 4) call the active_delay() function

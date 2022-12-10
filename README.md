@@ -11,13 +11,14 @@ And the other was to recreate the operation of unity , where the task was delete
 
 # Discussion 
 No driver function was used because the task1 in lab2_q1 where the light should be turned on was the function that called the unit tested function active_delay().
++ A bottom-up approach was used where the submodules mentioned below were tested first before they were integrated together for testing. This approach made sure each aspect of the functions had a level of accruacy due to the PASS/FAIL test cases. It allowed for simple and easy demonstration of testing in the test environment, Putty and C. It also allowed for test results to be observed easily, however when top-level integration occurred where testing the mutex to be taken was implemented, it became a bit tricky to view where it was taken and how long for using print statements and magic numbers. Thus, for the future, using local varibales for ticks when waiting for mutex to be given and verifying that the tick types work can be used to mitigate the problem or complications. Another problem is that this method allowed for high coupling of functions which can affect future testing if the submodules are changed hence I would suggest myself to use more functions and call them within the testing environment along with passing of local vairbales for high cohesion. On the other hand for small testig, this can be used in the future as it allows for long lasting results because it starts with the problem befor moving to the other sub-modules that works together error-free. 
 The different functions of the task1:
 1. access the mutex that allows the setting hihg or low of GPIO2
 2. GPIO2 pin set to high
 3. active_delay(), scheduler ticks use to acquire 500ms of time passing
 4. Give the mutex
 5. Taskdelay(), switches to another task
-where all were tested individually, and such the test cases are as followed below
+where all were tested individually, and such the test cases are as followed below 
 
 ## Test Case #1
 + Test Case ID: TC001

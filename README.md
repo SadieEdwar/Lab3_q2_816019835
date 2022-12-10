@@ -23,8 +23,8 @@ Test Case #1
 Test Case ID: TC001
 Test Case Description: xSemaphore mutex was given to task that was created
 Test Steps: 
-a) Enter integrated_test1 task
-b) Check if the mutex created is not equal to NULL
+1) Enter integrated_test1 task
+2) Check if the mutex created is not equal to NULL
 Test Data	: xSemaphore
 Expected Results: GPIO2 pin should turn on since mutex was accessed
 Actual Results: GPIO2 pin was turned on with message "Checking if GPIO2 is actually set"
@@ -34,8 +34,8 @@ Test Case #2
 Test Case ID: TC002	
 Test Case Description: xSemaphore mutex was not given to task that was created
 Test Steps:
-a) call integrated_test1 Task
-b) call gpio_task_3_message (void *arg) that does not return mutex
+1) call integrated_test1 Task
+2) call gpio_task_3_message (void *arg) that does not return mutex
 Test Data: xSempahore
 Expected Results: "Waiting for the semaphore to release resource from low\n"
 Actual Results: "Waiting for the semaphore to release resource from low \n"
@@ -45,9 +45,9 @@ Test Case #3
 Test Case ID: TC003
 Test Case Description: GPIO2 pin was set to high through mutex
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
 Test Data: GPIO_OUTPUT_IO_0
 Expected Results: "PASS: GPIO2 was set correctly"
 Actual Results: "PASS: GPIO2 was set correctly"
@@ -57,9 +57,9 @@ Test Case #4
 Test Case ID: TC004
 Test Case Description: GPIO2 pin was set to low through mutex
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 1
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 1
 Test Data: GPIO_OUTPUT_IO_0
 Expected Results: "PASS: GPIO2 was set correctly"
 Actual Results: "PASS: GPIO2 was set correctly"	
@@ -69,9 +69,9 @@ Test Case #5
 Test Case ID: TC005 
 Test Case Description: GPIO2 pin was set to some other logic level
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
 Test Data: GPIO_OUTPUT_IO_0	
 Expected Results: "FAIL: GPIO2 was not set correctly"
 Actual Results: "FAIL: GPIO2 was not set correctly"
@@ -81,11 +81,11 @@ Test Case #6
 Test Case ID: TC006
 Test Case Description: Active delay function was called within function 
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
-d) call the active_delay() function
-e) check if the time delayed is 50
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
+4) call the active_delay() function
+5) check if the time delayed is 50
 Test Data: active_delay()
 Expected Results: "Difference time: 50"
 Actual Results: "Difference time: 50"
@@ -95,11 +95,11 @@ Test Case #7
 Test Case ID: TC007
 Test Case Description: Active delay function waits for 500ms
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
-d) call the active_delay() function
-e) check if the time delayed is 500
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
+4) call the active_delay() function
+5) check if the time delayed is 500
 Test Data: diif_tick
 Expected Results: "PASS: time = 500ms"	
 Actual Results : "PASS: time = 500ms"	
@@ -109,11 +109,11 @@ Test Case #8
 Test Case ID: TC008
 Test Case Description: Active delay function waits for 500ms with tolerance of 100ms
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
-d) call the active_delay() function
-e) check if the time delayed is 500
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
+4) call the active_delay() function
+5) check if the time delayed is 500
 Test Data: diff_tick
 Expected Results:	"PASS: time delay within 100ms tolerance"
 Actual Results: "PASS: time delay within 100ms tolerance"
@@ -124,11 +124,11 @@ Test Case #9
 Test Case ID: TC009
 Test Case Description: Active delay function waits for a time outisde of 500ms plus tolerance of 100ms
 Test Steps:
-a)call the intergated_test1 Task
-b) enter the mutex , xSemaphore
-c) set the GPIO2 pin to 0
-d) call the active_delay() function
-e) check if the time delayed is 500
+1)call the intergated_test1 Task
+2) enter the mutex , xSemaphore
+3) set the GPIO2 pin to 0
+4) call the active_delay() function
+5) check if the time delayed is 500
 Test Data: diff_tick
 Expected Results: "FAIL: time delay not within 100ms tolerance"
 Actual Results: "FAIL: time delay not within 100ms tolerance"
